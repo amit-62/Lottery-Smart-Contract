@@ -1,5 +1,5 @@
 const { network, ethers } = require("hardhat")
-const { developmentChains, networkConfig } = require("../helper-hardhat-confirg")
+const { developmentChains, networkConfig } = require("../helper-hardhat-config")
 const { verify } = require("../utils/veify")
 
 const VRF_SUB_FUND_AMOUNT = ethers.utils.parseEther("2")
@@ -10,7 +10,7 @@ module.exports = async function({getNamedAccounts, deployments}) {
     const chainId = network.config.chainId
     let vrfCoordinatorAddress, subscriptionId, vrfCoordinatorMock
 
-    if(developmentChains.includes(network.name)){
+    if(chainId == 31337){
         vrfCoordinatorMock =  await ethers.getContract("VRFCoordinatorV2Mock")
         vrfCoordinatorAddress = vrfCoordinatorMock.address
         const transactionResponse = await vrfCoordinatorMock.createSubscription()

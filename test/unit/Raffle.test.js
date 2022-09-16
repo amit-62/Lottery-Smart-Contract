@@ -1,6 +1,6 @@
 const { assert, expect } = require("chai");
 const { getNamedAccounts, deployments, ethers, network } = require("hardhat");
-const { developmentChains, networkConfig } = require("../../helper-hardhat-confirg");
+const { developmentChains, networkConfig } = require("../../helper-hardhat-config");
 
 !developmentChains.includes(network.name)
     ?describe.skip
@@ -13,7 +13,7 @@ const { developmentChains, networkConfig } = require("../../helper-hardhat-confi
             raffle = await ethers.getContract("Raffle", deployer)
             vrfCoordinatorV2Mock = await ethers.getContract("VRFCoordinatorV2Mock", deployer)
             raffleEntranceFee = await raffle.getEntranceFee()
-            interval = interval = await raffle.getInterval()
+            interval = await raffle.getInterval()
         })
 
         describe("constructor", function(){

@@ -8,10 +8,10 @@ require("dotenv").config()
 
 /** @type import('hardhat/config').HardhatUserConfig */
 
-const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/your-api-key"
-const PRIVATE_KEY = process.env.PRIVATE_KEY || "0x"
-const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
-const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY || ""
+const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/94kxR80LIfpHBa2GGkCueV-BmEBwpQ9G"
+const PRIVATE_KEY = process.env.PRIVATE_KEY 
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "SBH1P9237DIEG8GPI93EBX4JN8RZ3B7NBH"
+const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY 
 
 module.exports = {
   defaultNetwork: "hardhat",
@@ -26,6 +26,9 @@ module.exports = {
       url: RINKEBY_RPC_URL,
       accounts: [PRIVATE_KEY],
     },
+  },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
   },
   gasReporter: {
     enabled: false,
@@ -45,6 +48,6 @@ module.exports = {
   },
 
   mocha: {
-    timeout: 100000,
+    timeout: 300000,
   }
 };
