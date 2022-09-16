@@ -119,7 +119,7 @@ contract Raffle is VRFConsumerBaseV2, KeeperCompatibleInterface {
         if (!success) {
             revert Raffle__TransferFailed();
         }
-        emit WinnerPicked(s_recentWinner);
+        emit WinnerPicked(recentWinner);
     }
 
     function getEntranceFee() public view returns (uint256) {
