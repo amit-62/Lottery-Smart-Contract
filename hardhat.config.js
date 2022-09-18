@@ -9,6 +9,8 @@ require("dotenv").config()
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const RINKEBY_RPC_URL = process.env.RINKEBY_RPC_URL || "https://eth-rinkeby.alchemyapi.io/v2/94kxR80LIfpHBa2GGkCueV-BmEBwpQ9G"
+const GOERLI_RPC_URL =
+    process.env.GOERLI_RPC_URL || "https://eth-goerli.g.alchemy.com/v2/GcNCcZQdWftRMD15Z6CYU0-YYWJQms9y"
 const PRIVATE_KEY = process.env.PRIVATE_KEY 
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "SBH1P9237DIEG8GPI93EBX4JN8RZ3B7NBH"
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY 
@@ -25,7 +27,15 @@ module.exports = {
       blockConfirmations: 3,
       url: RINKEBY_RPC_URL,
       accounts: [PRIVATE_KEY],
+      saveDeployments: true,
     },
+    goerli: {
+      url: GOERLI_RPC_URL,
+      accounts: PRIVATE_KEY !== undefined ? [PRIVATE_KEY] : [],
+      saveDeployments: true,
+      blockConfirmations: 3,
+      chainId: 5,
+  },
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
@@ -48,6 +58,6 @@ module.exports = {
   },
 
   mocha: {
-    timeout: 300000,
+    timeout: 700000,
   }
 };
